@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void choise_menu()
 {
@@ -17,36 +18,46 @@ int main()
         char phone[12];
     };
    
-    struct contact list_of_contacts[100];
-    int  number_of_menu = 1;
-    int cont_count = 0;
-    /* int* count = &cont_count; */
+    struct contact contacts[100];
+    int number_of_menu = 1;
+    int count = 0;
 
-    while(number_of_menu != 4)
-    {
+    while(number_of_menu != 4) {
+
         choise_menu();
         scanf("%d", &number_of_menu);
         getchar();
+
         if (number_of_menu == 1) {
             printf("Please enter name of contacts:\n");
-            fgets(list_of_contacts[cont_count].name, 40, stdin);
+            fgets(contacts[count].name, 40, stdin);
 
             printf("Please enter phonenumber:\n");
-            fgets(list_of_contacts[cont_count].phone, 12, stdin);
-            cont_count++;
+            fgets(contacts[count].phone, 12, stdin);
+            count++;
         }
         else if (number_of_menu == 2) {
             int i;
-            for (i = 1; i < cont_count + 1; i++)
-            {
-                printf("Name of contact %d:%s\n", i, list_of_contacts[i-1].name);
-                printf("Number of contact %d:%s\n", i, list_of_contacts[i-1].phone);
+            for (i = 1; i < count + 1; i++) {
+                printf("Name of contact %d:%s", i, contacts[i-1].name);
+                printf("Number of contact %d:%s\n", i, contacts[i-1].phone);
             }
 
         }
         else if (number_of_menu == 3) {
-            printf("3\n");
-
+            int i = 0;
+            char search[12];
+            printf("Please enter phonenumber for search:\n");
+            fgets(search, 12, stdin);
+            while (i < count) {
+                if (strcmp (search, contacts[i].phone) == 0) {
+                    printf("Name of this contact:%s\n", contacts[i].name);
+                    printf("Number of this contact:%s\n", contacts[i].phone);
+                    break;
+                }
+                i++;
+            }
+            
         }
         else if (number_of_menu == 4) {
             printf("Goodbye\n");

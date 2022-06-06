@@ -3,13 +3,13 @@
 
 int main()
 {
-        int a[N] = {1, 2, 3, 4, 5};
+    int a[N] = {1, 2, 3, 4, 5};
 	int i;
 
-        for (i = 0; i < N; i++) {
-                printf("%d  ", a[i]);
-        }
-        printf("\n");
+    for (i = 0; i < N; i++) {
+        printf("%d  ", a[i]);
+    }
+    printf("\n");
 
 	for (i = 0; i < N; i++)
 	{
@@ -17,9 +17,9 @@ int main()
 	}
 
 	for (i = 0; i < N; i++) {
-                printf("%d  ", a[i]);
-        }
-        printf("\n");
+        printf("%d  ", a[i]);
+    }
+    printf("\n");
 
-        return 0;
+return 0;
 }
