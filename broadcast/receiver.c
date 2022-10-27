@@ -8,7 +8,7 @@
 #include <netinet/in.h>
 #include <errno.h>
 
-#define handler_error(str) do{\
+#define handle_error(str) do{\
     perror(str);\
     return 1;}while(0)
 
@@ -20,7 +20,7 @@ int main(void){
 
     recv_socket = socket(AF_INET, SOCK_DGRAM, 0);
     if(recv_socket == -1){
-        handler_error("socket");
+        handle_error("socket");
     }
     
     
@@ -30,12 +30,12 @@ int main(void){
 
     if(bind(recv_socket, (struct sockaddr*)&recv_address, len) == -1){
         close(recv_socket);
-        handler_error("bind");
+        handle_error("bind");
     }
 
     if(recvfrom(recv_socket, recv_message, 255, 0, NULL, 0 ) == -1){
         close(recv_socket);
-        handler_error("recvfrom");
+        handle_error("recvfrom");
     }
     printf("Received: %s\n", recv_message);
 

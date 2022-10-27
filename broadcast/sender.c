@@ -8,7 +8,7 @@
 #include <netinet/in.h>
 #include <errno.h>
 
-#define handler_error(str) do{\
+#define handle_error(str) do{\
     perror(str);\
     return 1;}while(0)
 
@@ -21,12 +21,12 @@ int main(void){
 
     send_socket = socket(AF_INET, SOCK_DGRAM, 0);
     if(send_socket == -1){
-        handler_error("socket");
+        handle_error("socket");
     }
     
     if(setsockopt(send_socket, SOL_SOCKET, SO_BROADCAST, &flag, sizeof(flag)) == -1){
         close(send_socket);
-        handler_error("setsockopt");
+        handle_error("setsockopt");
     }
     
     sender_address.sin_family = AF_INET;
@@ -36,7 +36,7 @@ int main(void){
     if(sendto(send_socket, send_message, strlen(send_message), 0,
         (struct sockaddr*)&sender_address, len) == -1){
         close(send_socket);
-        handler_error("sendto");
+        handle_error("sendto");
     }
     
     close(send_socket);
