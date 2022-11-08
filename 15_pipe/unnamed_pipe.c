@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <errno.h>
 
 #define handle_error(str) do{\
     perror(str);\
@@ -24,10 +25,10 @@ int main()
     }
 
     pid = fork();
-    if (pid == -1) {
+    if (pid == -1){
         handle_error("fork");
     }
-    else if (pid > 0) {
+    else if (pid > 0){
         char mess1[10];
         char mess[] = "Hello";
 
@@ -45,7 +46,7 @@ int main()
         printf("Ok\n");
         return 0;
     }
-    else {
+    else{
         char mes1[10];
         char mes[] ="Hi";
 
