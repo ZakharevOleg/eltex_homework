@@ -7,7 +7,7 @@
 
 int main()
 {
-    char getstring[100];
+    char getstring[51];
     char delim[5] = " ";
     char *cmdline[10];
     int i = 0;
@@ -22,6 +22,7 @@ int main()
         token = strtok (NULL, delim);
         i++;
     }
+
 
     int pid;
     pid = fork();
