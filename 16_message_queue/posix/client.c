@@ -16,14 +16,10 @@ int main (int argc, char **argv)
 {
     mqd_t qd_client;
     char rcvmessage[MSG_BUFFER_SIZE];
-    struct mq_attr attr;
+    char sendmessage[MSG_BUFFER_SIZE] = "Hello from client";
 
-    attr.mq_flags = 0;
-    attr.mq_maxmsg = MAX_MESSAGES;
-    attr.mq_msgsize = MAX_MSG_SIZE;
-    attr.mq_curmsgs = 0;
 
-    if ((qd_client = mq_open ("/mq", O_RDONLY)) == -1) {
+    if ((qd_client = mq_open ("/sp-example-server", O_RDWR)) == -1) {
         perror ("mq_open");
         exit(1);
     }
@@ -33,6 +29,13 @@ int main (int argc, char **argv)
         exit (1);
     } else {
         printf("Message receive: %s\n", rcvmessage);
+    }
+    
+    if ((mq_send(qd_client, sendmessage, strlen (sendmessage) + 1, 0)) == -1) {
+        perror("mq_send");
+        exit(1);
+    } else {
+        printf("Message sent: %s\n", sendmessage);
     }
 
     exit(EXIT_SUCCESS);
