@@ -2,16 +2,16 @@
 
 int main()
 {
-	int i;
-	int a = 270533154;
-	char*ptr;
+    int i;
+    int a = 270533154;
+    char*ptr;
 
-	ptr = &a;
+    ptr = (char*)&a;
 
-	for (i = 0; i < 4; i++)
-	{
-		printf ("%d byte of a = %d\n", (i+1), *ptr);
-		ptr++;
-	}
-	return 0;
+    for (i = 0; i < 4; i++)
+    {
+        printf ("%d byte of a = %d\n", (i+1), *ptr);
+	ptr++;
+    }
+    return 0;
 }

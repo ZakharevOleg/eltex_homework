@@ -2,21 +2,22 @@
 
 int main()
 {
-        struct test {
-                char a;
-                int b;
-        }__attribute__((packed));
+    struct test {
+        char a;
+        int b;
+    }__attribute__((packed));
+    
+    char str[10] = {'A', 0, 0, 0, 0, 'B', 0, 0, 0, 0};
 
-        char str[10] = {'A', 0, 0, 0, 0, 'B', 0, 0, 0, 0};
+    struct test*ptr;
+    
+    ptr = (struct test*)&str;
+    
+    printf ("first char is %c, first number is %d\n", ptr->a, ptr->b);
 
-        struct test*ptr;
-        ptr = &str;
+    ptr = ptr +1;
+    printf ("second char is %c, second number is %d\n", ptr->a, ptr->b);
 
-        printf ("char is %c, number is %d\n", ptr->a, ptr->b);
-
-        ptr = ptr +1;
-        printf ("char is %c, number is %d\n", ptr->a, ptr->b);
-
-        return 0;
+    return 0;
 }
 

@@ -1,40 +1,32 @@
+#include <stdio.h>
 #include <fcntl.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 
-int main()
+#include "write_read.h"
+
+
+
+int write_to_file(int file)
 {
-    int file, sz, i;
     const char *buf = "Random text";
-    ssize_t writing, reading;
-    int len = 64;
-    char buffer[len + 1];
-    char ch;
-    off_t ret;
-    struct stat st;
-
-    file = open("file.txt", O_WRONLY | O_CREAT | O_TRUNC, 0664);
-    if(file == -1) {
-        perror("open");
-        exit (1);
-    }
-
+    ssize_t writing;
     writing = write (file, buf, strlen(buf));
     if (writing == -1) {
         perror("write");
         exit (1);
     }
-    close(file);
+    return 0;
+}
 
-    file = open("file.txt", O_RDONLY);
-    if(file == -1) {
-        perror("open");
-        exit (1);
-    }
+int read_from_file(int file)
+{
+    int len = 64;
+    char buffer[65];
+    ssize_t reading;
 
     while ((reading = read (file, buffer, len)) != 0) {
         if (reading == -1) {
@@ -44,22 +36,26 @@ int main()
         buffer[reading] = 0;
         printf("%s\n", buffer);
     }
-    close(file);
+    return 0;
+}
 
-    file = open("file.txt", O_RDONLY);
-    if(file == -1) {
-        perror("open");
-        exit (1);
-    }
+int reverse_print(int file)
+{
+    int size, i;
+    ssize_t reading;
+    char ch;
+    off_t ret;
+    struct stat st;
+
     stat("file.txt", &st);
-    sz = st.st_size;
+    size = st.st_size;
 
-    for (i = 1; i <= sz; i++)
+    for (i = 1; i <= size; i++)
     {
         ret = lseek (file, i * (-1), SEEK_END);
         if (ret == (off_t) -1) {
-        perror ("lseek");
-        exit (1);
+            perror ("lseek");
+            exit (1);
         }
         reading = read (file, &ch, 1);
         if (reading == -1) {
@@ -67,7 +63,7 @@ int main()
             exit (1);
         }
         printf ("%c", ch);
-        if (sz == i) {
+        if (size == i) {
             printf ("\n");
         }
 

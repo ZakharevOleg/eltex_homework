@@ -9,9 +9,11 @@
 int main() {
     
     int server_socket, recive_socket, bind_status;
-    struct sockaddr_in server_address;
+    struct sockaddr_in server_address, client_addres;
     char server_message[256] = "Hi client!";
     char client_message[256];
+    socklen_t client_len;
+    client_len = sizeof(client_addres);
 
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (server_socket == -1){
@@ -35,7 +37,7 @@ int main() {
     }
 
 
-    recive_socket = accept(server_socket, NULL, NULL);
+    recive_socket = accept(server_socket, (struct sockaddr*)&client_addres, &client_len);
     if (recive_socket == -1){
         perror("ERROR opening socket");
         exit(1);
