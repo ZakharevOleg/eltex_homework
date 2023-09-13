@@ -1,19 +1,11 @@
 #include <stdio.h>
 
-double addition(double a, double b);
-double subtraction(double a, double b);
-double multiplication(double a, double b);
-double  division(double a, double b);
+#include "operations.h"
 
 int main()
 {
     double num1, num2, ret;
     int num_menu = 0;
-    printf("Enter number1:\n");
-    scanf("%lf", &num1);
-
-    printf("Enter number2:\n");
-    scanf("%lf", &num2);
 
     printf("Choise number of operation:\n"
            "1: Addition\n"
@@ -21,9 +13,17 @@ int main()
            "3: Multiplication\n"
            "4: Division\n"
            "5: Exit from calculator\n");
-    
+
     scanf("%d", &num_menu);
     getchar();
+
+    printf("Enter number1:\n");
+    scanf("%lf", &num1);
+
+    printf("Enter number2:\n");
+    scanf("%lf", &num2);
+
+
     switch (num_menu) {
         case 1:
             ret = addition(num1, num2);
