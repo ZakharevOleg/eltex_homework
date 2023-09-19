@@ -1,11 +1,3 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-
 #include "open_close.h"
 #include "write_read.h"
 
