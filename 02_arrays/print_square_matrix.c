@@ -4,8 +4,8 @@
 
 int main()
 {
-    int a[N][M], i, k;
-    int j = 1;
+    int a[N][M], i, k, j;
+    j = 1;
     for (i = 0; i < N; i++)
     {
         for (k = 0; k < M; k++)

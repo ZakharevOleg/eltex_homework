@@ -4,7 +4,7 @@ int main()
 {
     int i;
     int a = 270533154;
-    char*ptr;
+    char *ptr = NULL;
 
     ptr = (char*)&a;
 

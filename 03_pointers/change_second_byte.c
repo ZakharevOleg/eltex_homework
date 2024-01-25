@@ -3,7 +3,7 @@
 int main()
 {
     int a = 270533154;
-    char*ptr;
+    char *ptr = NULL;
     printf ("%d\n", a);
     ptr = (char*)&a;
     ptr = ptr + 1;
