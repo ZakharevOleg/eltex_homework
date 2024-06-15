@@ -1,4 +1,3 @@
-CC = gcc
 OBJMODULES = open_close.o write_read.o
 CFLAGS = -g -Wall -ansi -pedantic
 
