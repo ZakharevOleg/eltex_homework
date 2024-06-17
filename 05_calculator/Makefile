@@ -1,10 +1,9 @@
-CC = gcc
-OBJMODULES = operations.o
+OBJMODULES = operations.o interface.o
 CFLAGS = -g -Wall -ansi -pedantic
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< -o $@
-calculator: calculator.c $(OBJMODULES) 
+calculator: main.c $(OBJMODULES) 
 	$(CC) $(CFLAGS) $^ -o  $@
 run: calculator
 	./calculator

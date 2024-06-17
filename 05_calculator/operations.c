@@ -1,21 +1,48 @@
+#include <stdio.h>
+
 #include "operations.h"
+#include "interface.h"
 
-double addition (double a, double b)
+void addition ()
 {
-    return a + b;
+    double num1, num2, ret;
+
+    print_get_number();
+    scanf("%lf %lf", &num1, &num2);
+
+    ret = num1 + num2;
+    print_result(ret);
 }
 
-double subtraction (double a, double b)
+void subtraction ()
 {
-    return a - b;
+    double num1, num2, ret;
+
+    print_get_number();
+    scanf("%lf %lf", &num1, &num2);
+
+    ret = num1 - num2;
+    print_result(ret);
 }
 
-double multiplication (double a, double b)
+void multiplication ()
 {
-    return a * b;
+    double num1, num2, ret;
+
+    print_get_number();
+    scanf("%lf %lf", &num1, &num2);
+
+    ret = num1 * num2;
+    print_result(ret);
 }
 
-double division (double a, double b)
+void division ()
 {
-    return a / b;
+    double num1, num2, ret;
+
+    print_get_number();
+    scanf("%lf %lf", &num1, &num2);
+
+    ret = num1 / num2;
+    print_result(ret);
 }
