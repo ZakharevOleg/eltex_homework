@@ -16,7 +16,7 @@ int main()
 
         switch (number_of_menu) {
             case 1:
-                added_contact(contacts, contact_count);
+                added_contact(contacts + contact_count);
                 contact_count++;
                 break;
             case 2:
