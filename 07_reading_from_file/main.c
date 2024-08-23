@@ -15,10 +15,6 @@ int main()
 
     read_from_file(file);
 
-    close_file(file);
-
-    file = open_to_read();
-
     reverse_print(file);
 
     close_file(file);
