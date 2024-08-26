@@ -1,4 +1,4 @@
-OBJMODULES = menu.o contacts.o
+OBJMODULES = menu.o contacts.o open_close.o
 CFLAGS = -g -Wall -ansi -pedantic
 
 %.o: %.c %.h

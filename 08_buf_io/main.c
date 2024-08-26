@@ -2,10 +2,12 @@
 
 #include "menu.h"
 #include "contacts.h"
+#include "open_close.h"
 
 int main()
 {
     struct contact contacts[100];
+    FILE *file_to_save;
 
     int number_of_menu = 1;
     int contact_count = 0;
@@ -32,6 +34,10 @@ int main()
                 printf("Incorrect input\n");
         }
     }
+
+    open_to_write(file_to_save);
+
+    close_file(file_to_save);
 
     return 0;
 }
