@@ -27,5 +27,5 @@ int open_to_read()
 
 void close_file(FILE *file_to_save)
 {   
-    int fclose(file_to_save);
+    fclose(file_to_save);
 }

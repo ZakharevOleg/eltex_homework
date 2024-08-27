@@ -7,7 +7,7 @@
 int main()
 {
     struct contact contacts[100];
-    FILE *file_to_save;
+    FILE *file_to_save = NULL;
 
     int number_of_menu = 1;
     int contact_count = 0;
@@ -29,13 +29,14 @@ int main()
                 break;
             case 4:
                 printf("Goodbye\n");
-                return 0;
             default:
                 printf("Incorrect input\n");
         }
     }
 
     open_to_write(file_to_save);
+
+    fwrite (&contacts, sizeof(struct contact), contact_count, file_to_save);
 
     close_file(file_to_save);
 
