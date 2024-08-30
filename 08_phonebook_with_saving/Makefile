@@ -1,4 +1,4 @@
-OBJMODULES = menu.o contacts.o open_close.o
+OBJMODULES = menu.o contacts.o saving.o
 CFLAGS = -g -Wall -ansi -pedantic
 
 %.o: %.c %.h
@@ -9,4 +9,4 @@ phonebook: main.c $(OBJMODULES)
 run: phonebook
 	./phonebook
 clean:
-	rm -f *.o phonebook
+	rm -f *.o phonebook contacts
