@@ -11,12 +11,10 @@ int main()
     }
     printf("\n");
 
-    for (i = 0; i < N; i++)
-    {
-	a[i] = N - i;
+    for (i = N-1; i >= 0; i--) {
 	printf("%d  ", a[i]);
     }
     printf("\n");
     
-return 0;
+    return 0;
 }
